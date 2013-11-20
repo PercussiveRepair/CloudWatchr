@@ -29,7 +29,7 @@ Requires:
 * Nginx, Apache or similar web server
 * A set of Amazon IAM credentials (use the Read-only Access policy template provided by AWS)
 
-Upload to a web accessible folder on your server.
+Clone the repo/Upload to a web accessible folder on your server.
 
 Edit AWS-sdk/config.inc.php to include your own IAM key and secret.
 
