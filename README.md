@@ -39,6 +39,8 @@ Edit AWS-sdk/config.inc.php to include your own IAM key and secret.
 
 You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
 
+Also, I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 29 to modify.
+
 Done! Your graphs should now be viewable.
 
 PS. Apologies for my code. I'm a sysadmin, not a programmer :)

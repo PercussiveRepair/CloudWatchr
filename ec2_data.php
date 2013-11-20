@@ -36,7 +36,7 @@ if ($instances->isOK())
 
 
       $dimensions = array('InstanceId' => $instance_id);
-      if (strpos($ec2_name,'live') !== false) {
+      //if (strpos($ec2_name,'live') !== false) {
       $ec2_label = str_replace('-','_',$ec2_name);
       
       $chart_parameters['cpu_data_'.$ec2_label] = array( 
@@ -85,7 +85,7 @@ if ($instances->isOK())
                         'chart_name' => "d3"
                         );
  
-    }
+    //}
    }
 }
 }
