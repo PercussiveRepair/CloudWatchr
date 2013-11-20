@@ -3,7 +3,7 @@ CWGraphs
 
 AWS Cloudwatch automated ELB/RDS/EC2 graphing
 
-This uses
+Using
 * AWS PHP-SDK v1.62 - https://github.com/amazonwebservices/aws-sdk-for-php
 * Flot - https://github.com/flot/flot
 
