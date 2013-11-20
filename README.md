@@ -19,7 +19,7 @@ Requires:
 * Nginx, Apache or similar web server
 * A set of Amazon IAM credentials (use the Read-only Access policy template provided by AWS)
  
-This uses the outdated but still funtional AWS PHP-SDK v1.62 to enumerate, and then gather Cloudwatch data for the last 6 hours for, any ELB, EC2 and RDS instances running in the account to which your IAM credentials give access.
+This uses the outdated but still functional AWS PHP-SDK v1.62 to enumerate, and then gather Cloudwatch data for the last 6 hours for, any ELB, EC2 and RDS instances running in the account to which your IAM credentials give access.
 
 The code is pre-configured for all the major (and some minor) Cloudwatch metrics for each instance type. 
 
