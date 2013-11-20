@@ -18,6 +18,10 @@ This uses the outdated but still functional AWS PHP-SDK v1.62 to enumerate, and 
 
 The code is pre-configured for all the major (and some minor) Cloudwatch metrics for each instance type. 
 
+It also has two cool features:
+* Clicking an entry in the legend will hide that data series on that graph and all below it. Clicking it again with unhide.
+* Data series are automatically coloured. Makes reading the graphs a bit more pleasant. 
+
 The code should be pretty easy to read and add to. Please feel free to contribute and/or fork. 
 
 Released under the MIT licence.
