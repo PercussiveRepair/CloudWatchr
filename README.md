@@ -14,6 +14,9 @@ Plots all the Cloudwatch metrics for your ELB, EC2 and RDS instances using only 
 
 About
 ------
+
+I got frustrated with the amount of clickery required to get a decent graph out of Amazons Cloudwatch Service and seeing there were no simple, free solutions for RDS monitoring at all, I filled the niche.
+
 This uses the outdated but still functional AWS PHP-SDK v1.62 to enumerate, and then gather Cloudwatch data for the last 6 hours for, any ELB, EC2 and RDS instances running in the account to which your IAM credentials give access.
 
 The code is pre-configured for all the major (and some minor) Cloudwatch metrics for each instance type. 
@@ -37,10 +40,12 @@ Clone the repo/Upload to a web accessible folder on your server.
 
 Edit AWS-sdk/config.inc.php to include your own IAM key and secret.
 
-You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
-
-Also, I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 29 to modify.
-
 Done! Your graphs should now be viewable.
+
+#### Gotchas:
+* You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
+* I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 29 to modify.
+* My name tags also have hyphens in them, which javascript doesn't like in vars. Hence in ec2_data.php, line 31, you may want to change the str_replace to something else.
+
 
 PS. Apologies for my code. I'm a sysadmin, not a programmer :)
