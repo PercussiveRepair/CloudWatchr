@@ -12,6 +12,8 @@ Builds upon but is substantially changed from https://github.com/manuskc/aws-clo
 
 Plots all the Cloudwatch metrics for your ELB, EC2 and RDS instances using only a set of read-only IAM credentials
 
+![alt tag](https://raw.github.com/PercussiveRepair/cwgraphs/master/imgs/rds.png)
+
 About
 ------
 
