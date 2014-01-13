@@ -48,9 +48,9 @@ Options
 -------
 
 The graph pages will take three URL parameters:
-# period: in seconds between data points. default: 300s (5 min) 
-# fromtime: date/time graphs should start - in an format strtotime (http://uk1.php.net/strtotime) can convert. default: 6 hours ago
-# endtime: date/time graph should end - again strtotime format. default: now.
+* period: in seconds between data points. default: 300s (5 min) 
+* fromtime: date/time graphs should start - in an format strtotime (http://uk1.php.net/strtotime) can convert. default: 6 hours ago
+* endtime: date/time graph should end - again strtotime format. default: now.
 
 #### Gotchas:
 * You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
