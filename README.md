@@ -52,6 +52,9 @@ The graph pages will take three URL parameters:
 * fromtime: date/time graphs should start - in an format strtotime (http://uk1.php.net/strtotime) can convert. default: 6 hours ago
 * endtime: date/time graph should end - again strtotime format. default: now.
 
+e.g. 
+`http://www.thisismygraphserver.com/ec2_graphs.php?period=3600&fromtime=last%20tuesday&endtime=yesterday`
+
 #### Gotchas:
 * You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
 * I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 44 to modify.
