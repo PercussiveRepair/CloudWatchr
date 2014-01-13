@@ -44,9 +44,17 @@ Edit AWS-sdk/config.inc.php to include your own IAM key and secret.
 
 Done! Your graphs should now be viewable.
 
+Options
+-------
+
+The graph pages will take three URL parameters:
+# period: in seconds between data points. default: 300s (5 min) 
+# fromtime: date/time graphs should start - in an format strtotime (http://uk1.php.net/strtotime) can convert. default: 6 hours ago
+# endtime: date/time graph should end - again strtotime format. default: now.
+
 #### Gotchas:
 * You may also need to grep for REGION_EU_W1 and change it to your applicable AWS region namespace. See here: http://docs.aws.amazon.com/AWSSDKforPHP/latest/index.html#m=AmazonEC2/set_region
-* I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 29 to modify.
+* I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 44 to modify.
 * My name tags also have hyphens in them, which javascript doesn't like in vars. Hence in ec2_data.php, line 31, you may want to change the str_replace to something else.
 
 
