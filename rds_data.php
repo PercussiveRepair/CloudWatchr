@@ -2,6 +2,22 @@
 require_once dirname(__FILE__) . '/AWS-sdk/sdk.class.php';
 include 'chart_colours.php';
 
+if ($_GET["period"]) {
+  $period = htmlspecialchars($_GET["period"]);
+} else {
+  $period = 300;
+}
+if ($_GET["fromtime"]) {
+  $fromtime = htmlspecialchars($_GET["fromtime"]);
+} else {
+  $fromtime = "-6 hour";
+}
+if ($_GET["endtime"]) {
+  $endtime = htmlspecialchars($_GET["endtime"]);
+} else {
+  $endtime = "now";
+}
+
 // RDS data
 $rds = new AmazonRDS();
 $rds->set_region(AmazonRDS::REGION_EU_W1);
@@ -23,9 +39,9 @@ if ($dbinstances->isOK())
       $chart_parameters['cpu_data_'.$rds_label] = array( 
                         'namespace' => 'AWS/RDS',
                         'metric' => 'CPUUtilization',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Percent',
                         'dimensions' => $dimensions,
@@ -38,9 +54,9 @@ if ($dbinstances->isOK())
       $chart_parameters['connections_data_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'DatabaseConnections',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Count',
                         'dimensions' => $dimensions,
@@ -53,9 +69,9 @@ if ($dbinstances->isOK())
       $chart_parameters['write_iops_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'WriteIOPS',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Count/Second',
                         'dimensions' => $dimensions,
@@ -68,9 +84,9 @@ if ($dbinstances->isOK())
       $chart_parameters['replica_lag_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'ReplicaLag',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Seconds',
                         'dimensions' => $dimensions,
@@ -83,9 +99,9 @@ if ($dbinstances->isOK())
       $chart_parameters['read_iops_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'ReadIOPS',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Count/Second',
                         'dimensions' => $dimensions,
@@ -98,9 +114,9 @@ if ($dbinstances->isOK())
       $chart_parameters['free_memory_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'FreeableMemory',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Bytes',
                         'dimensions' => $dimensions,
@@ -113,9 +129,9 @@ if ($dbinstances->isOK())
       $chart_parameters['free_storage_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'FreeStorageSpace',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Bytes',
                         'dimensions' => $dimensions,
@@ -128,9 +144,9 @@ if ($dbinstances->isOK())
       $chart_parameters['binlog_usage_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'BinLogDiskUsage',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Bytes',
                         'dimensions' => $dimensions,
@@ -143,9 +159,9 @@ if ($dbinstances->isOK())
       $chart_parameters['read_latency_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'ReadLatency',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Seconds',
                         'dimensions' => $dimensions,
@@ -158,9 +174,9 @@ if ($dbinstances->isOK())
       $chart_parameters['write_latency_'.$rds_label] = array(
                         'namespace' => 'AWS/RDS',
                         'metric' => 'WriteLatency',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Seconds',
                         'dimensions' => $dimensions,

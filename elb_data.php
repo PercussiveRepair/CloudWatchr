@@ -2,6 +2,22 @@
 require_once dirname(__FILE__) . '/AWS-sdk/sdk.class.php';
 include 'chart_colours.php';
 
+if ($_GET["period"]) {
+  $period = htmlspecialchars($_GET["period"]);
+} else {
+  $period = 300;
+}
+if ($_GET["fromtime"]) {
+  $fromtime = htmlspecialchars($_GET["fromtime"]);
+} else {
+  $fromtime = "-6 hour";
+}
+if ($_GET["endtime"]) {
+  $endtime = htmlspecialchars($_GET["endtime"]);
+} else {
+  $endtime = "now";
+}
+
 // ELB data
 $elb = new AmazonELB();
 $elb->set_region(AmazonELB::REGION_EU_W1);
@@ -20,9 +36,9 @@ $chart_parameters = array();
       $chart_parameters['request_count_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',				
                         'metric' => 'RequestCount', 		
-                        'fromtime' => '-6 hour', 				
-                        'endtime' => 'now', 					
-                        'period' => 120, 					//interval between points in seconds ( >= 60 )
+                        'fromtime' => $fromtime, 				
+                        'endtime' => $endtime, 					
+                        'period' => $period, 					//interval between points in seconds ( >= 60 )
                         'result' => 'Sum', 					//Aggregation of required metric
                         'unit' => 'Count', 					//Unit of metric
                         'dimensions' => $dimensions, 	//Filter based on dimensions - Define the value on $dimension array above and use the name here
@@ -36,9 +52,9 @@ $chart_parameters = array();
 		$chart_parameters['latency_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',
                         'metric' => 'Latency',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Maximum',
                         'unit' => 'Seconds',
                         'dimensions' => $dimensions,
@@ -52,9 +68,9 @@ $chart_parameters = array();
 		$chart_parameters['healthy_host_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',
                         'metric' => 'HealthyHostCount',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Count',
                         'dimensions' => $dimensions,
@@ -67,9 +83,9 @@ $chart_parameters = array();
     $chart_parameters['backend_http_2xx_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',
                         'metric' => 'HTTPCode_Backend_2XX',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Sum',
                         'unit' => 'Count',
                         'dimensions' => $dimensions,
@@ -82,9 +98,9 @@ $chart_parameters = array();
     $chart_parameters['backend_http_4xx_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',
                         'metric' => 'HTTPCode_Backend_4XX',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Sum',
                         'unit' => 'Count',
                         'dimensions' => $dimensions,
@@ -97,9 +113,9 @@ $chart_parameters = array();
     $chart_parameters['backend_http_5xx_data_'.$elb_label] = array(
                         'namespace' => 'AWS/ELB',
                         'metric' => 'HTTPCode_Backend_5XX',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Sum',
                         'unit' => 'Count',
                         'dimensions' => $dimensions,

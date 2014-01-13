@@ -2,6 +2,22 @@
 require_once dirname(__FILE__) . '/AWS-sdk/sdk.class.php';
 include 'chart_colours.php';
 
+if ($_GET["period"]) {
+  $period = htmlspecialchars($_GET["period"]);
+} else {
+  $period = 300;
+}
+if ($_GET["fromtime"]) {
+  $fromtime = htmlspecialchars($_GET["fromtime"]);
+} else {
+  $fromtime = "-6 hour";
+}
+if ($_GET["endtime"]) {
+  $endtime = htmlspecialchars($_GET["endtime"]);
+} else {
+  $endtime = "now";
+}
+
 // EC2 data
 $ec2 = new AmazonEC2();
 $ec2->set_region(AmazonEC2::REGION_EU_W1);
@@ -42,9 +58,9 @@ if ($instances->isOK())
       $chart_parameters['cpu_data_'.$ec2_label] = array( 
                         'namespace' => 'AWS/EC2',
                         'metric' => 'CPUUtilization',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Percent',
                         'dimensions' => $dimensions,
@@ -57,9 +73,9 @@ if ($instances->isOK())
       $chart_parameters['network_in_'.$ec2_label] = array(
                         'namespace' => 'AWS/EC2',
                         'metric' => 'NetworkIn',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Bytes',
                         'dimensions' => $dimensions,
@@ -72,9 +88,9 @@ if ($instances->isOK())
       $chart_parameters['network_out_'.$ec2_label] = array(
                         'namespace' => 'AWS/EC2',
                         'metric' => 'NetworkOut',
-                        'fromtime' => '-6 hour',
-                        'endtime' => 'now',
-                        'period' => 120,
+                        'fromtime' => $fromtime,
+                        'endtime' => $endtime,
+                        'period' => $period,
                         'result' => 'Average',
                         'unit' => 'Bytes',
                         'dimensions' => $dimensions,
