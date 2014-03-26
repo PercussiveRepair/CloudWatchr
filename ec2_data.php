@@ -70,6 +70,22 @@ if ($instances->isOK())
                         'graph_color' => array_rand($chart_colours,1),
                         'chart_name' => "d1"
                        );
+      //requires ec2 memory custom metric cron running: https://gist.github.com/PercussiveRepair/9781858
+      // $chart_parameters['memusage_'.$ec2_label] = array(
+      //                   'namespace' => 'EC2/Memory',
+      //                   'metric' => 'MemUsage',
+      //                   'fromtime' => $fromtime,
+      //                   'endtime' => $endtime,
+      //                   'period' => $period,
+      //                   'result' => 'Average',
+      //                   'unit' => 'Percent',
+      //                   'dimensions' => $dimensions,
+      //                   'multiplier' => 1,
+      //                   'graph_variable_name' => "memusage_".$ec2_label,
+      //                   'graph_label_name' => $ec2_name,
+      //                   'graph_color' => array_rand($chart_colours,1),
+      //                   'chart_name' => "d2"
+      //                   );
       $chart_parameters['network_in_'.$ec2_label] = array(
                         'namespace' => 'AWS/EC2',
                         'metric' => 'NetworkIn',

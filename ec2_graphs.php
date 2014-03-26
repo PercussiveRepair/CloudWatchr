@@ -28,12 +28,14 @@ require_once dirname(__FILE__) . '/ec2_data.php';
 
 <!--the div where chart has to be plotted should have an id="divname_div", use divname on cloudwatch.chart.php-->
 
-  <h4>CPU Usage:</h4>
+  <h4>EC2 - CPU Usage:</h4>
   <div class='chart' id='d1_div'></div>
-  <h4>Network Received:</h4>
-  <div class='chart' id='d2_div'></div>
-  <h4>Network Sent:</h4>
+ <!--  <h4>EC2 - Memory Usage:</h4>
+  <div class='chart' id='d2_div'></div> -->
+  <h4>EC2 - Network Received:</h4>
   <div class='chart' id='d3_div'></div>
+  <h4>EC2 - Network Sent:</h4>
+  <div class='chart' id='d4_div'></div>
   
 <!--call this function in body division at end, this starts rendering chart after the page is loaded until here -->
 <script src="//code.jquery.com/jquery.js"></script>

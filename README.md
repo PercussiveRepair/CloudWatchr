@@ -60,5 +60,8 @@ e.g.
 * I use the AWS Name tag to identify my EC2 instances. This may not be the case for you. Have a look at ec2_data.php around line 44 to modify.
 * My name tags also have hyphens in them, which javascript doesn't like in vars. Hence in ec2_data.php, line 31, you may want to change the str_replace to something else.
 
+Other Notes
+-----------
+There are many ways you can also add your own custom metrics into Cloudwatch and CWGraphs should be able to pull any of them. As an example, I have included in the ec2_graphs code a custom metric graph for EC2 memory usage (line 73 et al). This requires a python script (https://gist.github.com/PercussiveRepair/9781858 forked from https://gist.github.com/shevron/6204349) cronned to run on your EC2 instances to post the data back to Cloudwatch which CWGraphs can retrieve and display.
 
 PS. Apologies for my code. I'm a sysadmin, not a programmer :)
