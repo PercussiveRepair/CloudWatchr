@@ -1,4 +1,4 @@
-CWGraphs
+CloudWatchr
 ========
 
 AWS Cloudwatch automated ELB/RDS/EC2 graphing
